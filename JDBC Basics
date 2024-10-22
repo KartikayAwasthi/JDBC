@@ -1,0 +1,38 @@
+1)load the drivevr :
+
+
+  Class.forName("com.mysql.jdbc.Driver)
+
+	OR
+
+  DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+
+ 2)Create a Connection :
+
+   Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname","username","password");
+
+
+ 3)Create query,Statement,PreparedStatement ,CallableStatement
+ eg
+      String q="select * from students";
+
+      Statement stmt=con.createStatement();
+
+      ResultSet set=stmt.executeQuery(q);
+
+
+4)Process the data:
+
+	while(set.next())
+	{
+		int id=set.getInt("studentId");
+		String name=set.getString("studnetName");
+		System.out.println(id);
+		System.out.println(name);
+	}
+
+
+5)close the connection:
+	con.close();
+
